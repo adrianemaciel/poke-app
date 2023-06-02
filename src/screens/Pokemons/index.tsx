@@ -1,10 +1,10 @@
 import {Text, View} from 'react-native';
 
-const Home = () => {
+const Pokemons = () => {
   return (
     <View>
-      <Text>home</Text>
+      <Text>Pokemons</Text>
     </View>
   );
 };
-export default Home;
+export default Pokemons;
