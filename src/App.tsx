@@ -1,13 +1,15 @@
 import React from 'react';
 import Home from './screens/Home';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icon from 'react-native-vector-icons/AntDesign';
-import {NavigationContainer} from '@react-navigation/native';
 import Pokemons from './screens/Pokemons';
+import Details from './screens/Details';
 import Contact from './screens/Contact';
+import Icon from 'react-native-vector-icons/AntDesign';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Tab = createMaterialBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
         />
         <Tab.Screen
           name="Pokémons"
-          component={Pokemons}
+          component={PokemonsRoute}
           options={{
             tabBarIcon: ({color}) => (
               <Icon name="staro" color={color} size={26} />
@@ -42,6 +44,23 @@ function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
+  );
+}
+
+function PokemonsRoute() {
+  return (
+    <Stack.Navigator initialRouteName="pokemons">
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="pokemons"
+        component={Pokemons}
+      />
+      <Stack.Screen
+        name="details"
+        component={Details}
+        options={{headerTitle: 'Detalhes'}}
+      />
+    </Stack.Navigator>
   );
 }
 
