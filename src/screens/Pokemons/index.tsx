@@ -2,6 +2,10 @@ import {Container} from './styles';
 import {FlatList} from 'react-native';
 import CardPokemon from '../../components/Card';
 
+type Props = {
+  navigation: any;
+};
+
 const DATA = [
   {
     id: '01',
@@ -35,13 +39,21 @@ const DATA = [
   },
 ];
 
-const Pokemons = () => {
+const Pokemons = ({navigation}: Props) => {
+  const handlePress = () => {
+    navigation.navigate('details');
+  };
+
   return (
     <Container>
       <FlatList
         data={DATA}
         renderItem={({item}) => (
-          <CardPokemon title={item.title} image={item.image} />
+          <CardPokemon
+            onPress={() => handlePress()}
+            title={item.title}
+            image={item.image}
+          />
         )}
         keyExtractor={item => item.id}
       />
