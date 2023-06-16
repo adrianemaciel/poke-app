@@ -1,10 +1,12 @@
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 import {Container} from './styles';
 
-const Details = () => {
+const Details = ({route}: any) => {
+  const {item} = route.params;
   return (
     <Container>
-      <Text>Detalhes de pokemons</Text>
+      <Text>Detalhes de Pokemons</Text>
+      <Text>{item}</Text>
     </Container>
   );
 };
