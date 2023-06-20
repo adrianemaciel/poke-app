@@ -1,12 +1,17 @@
-import {Text} from 'react-native';
-import {Container} from './styles';
+import {Image} from 'react-native';
+import {Container, Title} from './styles';
 
 const Details = ({route}: any) => {
-  const {item} = route.params;
+  const {itemTitle, itemImage} = route.params;
   return (
     <Container>
-      <Text>Detalhes de Pokemons</Text>
-      <Text>{item}</Text>
+      <Title>{itemTitle}</Title>
+      <Image
+        source={{
+          uri: itemImage,
+        }}
+        style={{width: 140, height: 140}}
+      />
     </Container>
   );
 };

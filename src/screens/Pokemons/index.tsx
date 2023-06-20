@@ -40,8 +40,11 @@ const DATA = [
 ];
 
 const Pokemons = ({navigation}: Props) => {
-  const handlePress = (title: string) => {
-    navigation.navigate('details', {item: title});
+  const handlePress = (title: string, image: string) => {
+    navigation.navigate('details', {
+      itemTitle: title,
+      itemImage: image,
+    });
   };
 
   return (
@@ -50,7 +53,7 @@ const Pokemons = ({navigation}: Props) => {
         data={DATA}
         renderItem={({item}) => (
           <CardPokemon
-            onPress={() => handlePress(item.title)}
+            onPress={() => handlePress(item.title, item.image)}
             title={item.title}
             image={item.image}
           />
