@@ -1,17 +1,23 @@
-import {Image} from 'react-native';
-import {Container, Title} from './styles';
+import {Image, View} from 'react-native';
+import {Container, Content, PokeDetails, Title} from './styles';
+import BackButton from '../../components/Button';
 
 const Details = ({route}: any) => {
   const {itemTitle, itemImage} = route.params;
   return (
     <Container>
-      <Title>{itemTitle}</Title>
-      <Image
-        source={{
-          uri: itemImage,
-        }}
-        style={{width: 140, height: 140}}
-      />
+      <Content>
+        <PokeDetails>
+          <Title>{itemTitle}</Title>
+          <Image
+            source={{
+              uri: itemImage,
+            }}
+            style={{width: 140, height: 140}}
+          />
+        </PokeDetails>
+      </Content>
+      <BackButton />
     </Container>
   );
 };
