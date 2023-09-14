@@ -15,8 +15,83 @@ type Abilities = {
   slot: number;
 };
 
+type BaseExperience = number;
+
+type Height = number;
+
+type Moves = [
+  {
+    move: {
+      name: string;
+      url: string;
+    };
+    version_group_details: [
+      {
+        level_learned_at: number;
+        move_learn_method: {
+          name: string;
+          url: string;
+        };
+        version_group: {
+          name: string;
+          url: string;
+        };
+      },
+      {
+        level_learned_at: number;
+        move_learn_method: {
+          name: string;
+          url: string;
+        };
+        version_group: {
+          name: string;
+          url: string;
+        };
+      },
+    ];
+  },
+];
+
+type Sprites = {
+  back_default: string;
+  back_female: null;
+  back_shiny: string;
+  back_shiny_female: null;
+  front_default: string;
+  front_female: null;
+  front_shiny: string;
+  front_shiny_female: null;
+};
+
+type Stats = [
+  {
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+      url: string;
+    };
+  },
+];
+
+type Types = [
+  {
+    slot: number;
+    type: {
+      name: string;
+      url: string;
+    };
+  },
+];
+
 const Details = ({route}: any) => {
   const [data, setData] = useState<Array<Abilities>>([]);
+  const [baseExperience, setBaseExperience] = useState<BaseExperience>();
+  const [height, setHeight] = useState<Height>();
+  const [moves, setMoves] = useState<Array<Moves>>([]);
+  const [sprites, setSprites] = useState<Array<Sprites>>([]);
+  const [stats, setStats] = useState<Array<Stats>>([]);
+  const [types, setTypes] = useState<Array<Types>>([]);
 
   const {itemTitle, itemImage} = route.params;
   function PokemonsListDetails() {
@@ -24,6 +99,12 @@ const Details = ({route}: any) => {
       .get(`https://pokeapi.co/api/v2/pokemon/${itemTitle}`)
       .then(function (response) {
         setData(response.data.abilities);
+        setBaseExperience(response.data.base_experience);
+        setHeight(response.data.height);
+        setMoves(response.data.moves);
+        setSprites(response.data.sprites);
+        setStats(response.data.stats);
+        setTypes(response.data.types);
       });
   }
 
@@ -31,7 +112,7 @@ const Details = ({route}: any) => {
     PokemonsListDetails();
   }, []);
 
-  console.log('data', JSON.stringify(data, null, 2));
+  console.log('data', JSON.stringify(types, null, 2));
 
   return (
     <Container>
