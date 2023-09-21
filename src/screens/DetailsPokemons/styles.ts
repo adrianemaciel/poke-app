@@ -6,13 +6,13 @@ const Container = styled(View)`
   flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px;
   height: 100%;
 `;
 
 const Content = styled(View)`
-  width: 100%;
-  justify-content: space-between;
+  height: 100%;
+  margin-bottom: auto;
+  /* width: 100%; */
 `;
 
 const Title = styled(Text)`
@@ -28,4 +28,18 @@ const PokeDetails = styled(View)`
   flex-direction: column;
 `;
 
-export {Container, Content, Title, PokeDetails};
+const Item = styled(View)`
+  justify-content: center;
+  background-color: #fff;
+  padding: 10px;
+  margin: 5px;
+`;
+
+const ItemDetailsList = styled(View)`
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 10px;
+  margin: 5px;
+`;
+
+export {Container, Content, Title, PokeDetails, Item, ItemDetailsList};
