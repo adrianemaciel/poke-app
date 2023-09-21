@@ -1,5 +1,12 @@
-import {Image, View} from 'react-native';
-import {Container, Content, PokeDetails, Title} from './styles';
+import {Image, View, ScrollView} from 'react-native';
+import {
+  Container,
+  Content,
+  Item,
+  ItemDetailsList,
+  PokeDetails,
+  Title,
+} from './styles';
 import BackButton from '../../components/Button';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
@@ -61,16 +68,14 @@ type Sprites = {
   front_shiny_female: null;
 };
 
-type Stats = [
-  {
-    base_stat: number;
-    effort: number;
-    stat: {
-      name: string;
-      url: string;
-    };
-  },
-];
+type Stats = {
+  base_stat: number;
+  effort: number;
+  stat: {
+    name: string;
+    url: string;
+  };
+};
 
 type Types = [
   {
@@ -110,57 +115,77 @@ const Details = ({route}: any) => {
     PokemonsListDetails();
   }, []);
 
-  console.log('data', JSON.stringify(height, null, 2));
+  console.log('data', JSON.stringify(stats, null, 2));
 
   return (
-    <Container>
-      <Content>
-        <PokeDetails>
-          <Title>{itemTitle}</Title>
-          <Image
-            source={{
-              uri: itemImage,
-            }}
-            style={{width: 140, height: 140}}
-          />
-        </PokeDetails>
-        <View>
-          <Title>Abilities</Title>
-          <FlatList
-            data={abilities}
-            renderItem={({item}) => (
-              <View>
-                <Text>{item.ability.name}</Text>
-                <Text>{item.is_hidden}</Text>
-                <Text>{item.slot}</Text>
-              </View>
-            )}
-            keyExtractor={(item, index) => index.toString()}
-          />
-        </View>
-        <View>
-          <Title>Base Experience</Title>
-          <Text>{baseExperience}</Text>
-        </View>
-        <View>
-          <Title>Height</Title>
-          <Text>{height}</Text>
-        </View>
-        <View>
-          <Title>Moves</Title>
-          <FlatList
-            data={moves}
-            renderItem={({item}) => (
-              <View>
-                <Text>{item.move.name}</Text>
-              </View>
-            )}
-            keyExtractor={(item, index) => index.toString()}
-          />
-        </View>
-      </Content>
-      <BackButton />
-    </Container>
+    <ScrollView>
+      <Container>
+        <Content>
+          <PokeDetails>
+            <Title>{itemTitle}</Title>
+            <Image
+              source={{
+                uri: itemImage,
+              }}
+              style={{width: 140, height: 140}}
+            />
+          </PokeDetails>
+          <View>
+            <Title>Abilities</Title>
+            <FlatList
+              data={abilities}
+              renderItem={({item}) => (
+                <ItemDetailsList>
+                  <Text>{item.ability.name}</Text>
+                  <Text>{item.slot}</Text>
+                </ItemDetailsList>
+              )}
+              keyExtractor={(item, index) => index.toString()}
+            />
+          </View>
+          <View>
+            <Title>Base Experience</Title>
+            <Item>
+              <Text>{baseExperience}</Text>
+            </Item>
+          </View>
+          <View>
+            <Title>Height</Title>
+            <Item>
+              <Text>{height}</Text>
+            </Item>
+          </View>
+
+          <View>
+            <Title>Moves</Title>
+            <FlatList
+              data={moves}
+              renderItem={({item}) => (
+                <ItemDetailsList>
+                  <Text>{item.move.name}</Text>
+                </ItemDetailsList>
+              )}
+              keyExtractor={(item, index) => index.toString()}
+              showsVerticalScrollIndicator={false}
+            />
+          </View>
+
+          <View>
+            <Title>Sprites</Title>
+            <FlatList
+              data={sprites}
+              renderItem={({item}) => (
+                <Item>
+                  <Text>{item.back_default}</Text>
+                </Item>
+              )}
+              keyExtractor={(item, index) => index.toString()}
+            />
+          </View>
+        </Content>
+        {/* <BackButton /> */}
+      </Container>
+    </ScrollView>
   );
 };
 
