@@ -115,7 +115,7 @@ const Details = ({route}: any) => {
     PokemonsListDetails();
   }, []);
 
-  console.log('data', JSON.stringify(stats, null, 2));
+  // console.log('data', JSON.stringify(stats, null, 2));
 
   return (
     <ScrollView>
@@ -136,8 +136,12 @@ const Details = ({route}: any) => {
               data={abilities}
               renderItem={({item}) => (
                 <ItemDetailsList>
-                  <Text>{item.ability.name}</Text>
-                  <Text>{item.slot}</Text>
+                  <Item>
+                    <Text>{item.ability.name}</Text>
+                  </Item>
+                  <Item>
+                    <Text>{item.slot}</Text>
+                  </Item>
                 </ItemDetailsList>
               )}
               keyExtractor={(item, index) => index.toString()}
@@ -145,31 +149,32 @@ const Details = ({route}: any) => {
           </View>
           <View>
             <Title>Base Experience</Title>
-            <Item>
+            <ItemDetailsList>
               <Text>{baseExperience}</Text>
-            </Item>
+            </ItemDetailsList>
           </View>
           <View>
             <Title>Height</Title>
-            <Item>
+            <ItemDetailsList>
               <Text>{height}</Text>
-            </Item>
+            </ItemDetailsList>
           </View>
 
           <View>
             <Title>Moves</Title>
             <FlatList
+              contentContainerStyle={{justifyContent: 'space-between', flex: 1}}
+              style={{padding: 10, flexDirection: 'row'}}
               data={moves}
+              numColumns={2}
               renderItem={({item}) => (
-                <ItemDetailsList>
+                <Item>
                   <Text>{item.move.name}</Text>
-                </ItemDetailsList>
+                </Item>
               )}
               keyExtractor={(item, index) => index.toString()}
-              showsVerticalScrollIndicator={false}
             />
           </View>
-
           <View>
             <Title>Sprites</Title>
             <FlatList
@@ -183,7 +188,6 @@ const Details = ({route}: any) => {
             />
           </View>
         </Content>
-        {/* <BackButton /> */}
       </Container>
     </ScrollView>
   );
