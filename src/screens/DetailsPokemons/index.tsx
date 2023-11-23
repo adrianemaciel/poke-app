@@ -77,15 +77,13 @@ type Stats = {
   };
 };
 
-type Types = [
-  {
-    slot: number;
-    type: {
-      name: string;
-      url: string;
-    };
-  },
-];
+type Types = {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
+};
 
 const Details = ({route}: any) => {
   const [abilities, setAbilities] = useState<Array<Abilities>>([]);
