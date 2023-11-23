@@ -7,7 +7,6 @@ import {
   PokeDetails,
   Title,
 } from './styles';
-import BackButton from '../../components/Button';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
