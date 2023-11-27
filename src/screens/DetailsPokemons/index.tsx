@@ -10,7 +10,7 @@ import {
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Divider, Text} from 'react-native-paper';
 
 type Abilities = {
   ability: {
@@ -116,10 +116,9 @@ const Details = ({route}: any) => {
 
   return (
     <ScrollView>
-      <ScrollView 
-      horizontal={true}
-      contentContainerStyle={{width: '100%', height: '100%'}}
-      >
+      <ScrollView
+        horizontal={true}
+        contentContainerStyle={{width: '100%', height: '100%'}}>
         <Container>
           <Content>
             <PokeDetails>
@@ -133,6 +132,7 @@ const Details = ({route}: any) => {
             </PokeDetails>
             <View>
               <Title>Abilities</Title>
+              <Divider />
               <FlatList
                 data={abilities}
                 renderItem={({item}) => (
@@ -150,12 +150,14 @@ const Details = ({route}: any) => {
             </View>
             <View>
               <Title>Base Experience</Title>
+              <Divider />
               <ItemDetailsList>
                 <Text>{baseExperience}</Text>
               </ItemDetailsList>
             </View>
             <View>
               <Title>Height</Title>
+              <Divider />
               <ItemDetailsList>
                 <Text>{height}</Text>
               </ItemDetailsList>
@@ -163,6 +165,7 @@ const Details = ({route}: any) => {
 
             <View>
               <Title>Moves</Title>
+              <Divider />
               <FlatList
                 contentContainerStyle={{
                   justifyContent: 'space-between',
@@ -181,6 +184,7 @@ const Details = ({route}: any) => {
             </View>
             <View>
               <Title>Sprites</Title>
+              <Divider />
               <FlatList
                 data={sprites}
                 renderItem={({item}) => (
