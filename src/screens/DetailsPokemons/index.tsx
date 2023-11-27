@@ -101,7 +101,7 @@ const Details = ({route}: any) => {
         setAbilities(response.data.abilities);
         setBaseExperience(response.data.base_experience);
         setHeight(response.data.height);
-        setMoves(response.data.moves);
+        setMoves(response.data.moves.slice(0, 8));
         setSprites(response.data.sprites);
         setStats(response.data.stats);
         setTypes(response.data.types);
