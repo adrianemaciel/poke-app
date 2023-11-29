@@ -2,7 +2,6 @@ import React from 'react';
 import Home from './screens/Home';
 import Pokemons from './screens/Pokemons';
 import Details from './screens/DetailsPokemons';
-import Contact from './screens/Contact';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
@@ -30,15 +29,6 @@ function App() {
           options={{
             tabBarIcon: ({color}) => (
               <Icon name="staro" color={color} size={26} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Contatos"
-          component={Contact}
-          options={{
-            tabBarIcon: ({color}) => (
-              <Icon name="phone" color={color} size={26} />
             ),
           }}
         />
