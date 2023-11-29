@@ -112,7 +112,7 @@ const Details = ({route}: any) => {
     PokemonsListDetails();
   }, []);
 
-  // console.log('data', JSON.stringify(stats, null, 2));
+  // console.log('data', JSON.stringify(types, null, 2));
 
   return (
     <ScrollView>
@@ -191,6 +191,41 @@ const Details = ({route}: any) => {
                   <Item>
                     <Text>{item.back_default}</Text>
                   </Item>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+            <View>
+              <Title>Stats</Title>
+              <Divider />
+              <FlatList
+                contentContainerStyle={{
+                  justifyContent: 'space-between',
+                  flex: 1,
+                }}
+                style={{padding: 10, flexDirection: 'row'}}
+                data={stats}
+                horizontal={false}
+                numColumns={2}
+                renderItem={({item}) => (
+                  <Item>
+                    <Text>{item.stat.name}</Text>
+                  </Item>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+            <View>
+              <Title>Types</Title>
+              <Divider />
+              <FlatList
+                data={types}
+                renderItem={({item}) => (
+                  <ItemDetailsList>
+                    <Item>
+                      <Text>{item.slot}</Text>
+                    </Item>
+                  </ItemDetailsList>
                 )}
                 keyExtractor={(item, index) => index.toString()}
               />
