@@ -10,7 +10,7 @@ import {
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Divider, Text} from 'react-native-paper';
 
 type Abilities = {
   ability: {
@@ -101,7 +101,7 @@ const Details = ({route}: any) => {
         setAbilities(response.data.abilities);
         setBaseExperience(response.data.base_experience);
         setHeight(response.data.height);
-        setMoves(response.data.moves);
+        setMoves(response.data.moves.slice(0, 8));
         setSprites(response.data.sprites);
         setStats(response.data.stats);
         setTypes(response.data.types);
@@ -112,80 +112,127 @@ const Details = ({route}: any) => {
     PokemonsListDetails();
   }, []);
 
-  // console.log('data', JSON.stringify(stats, null, 2));
+  // console.log('data', JSON.stringify(types, null, 2));
 
   return (
     <ScrollView>
-      <Container>
-        <Content>
-          <PokeDetails>
-            <Title>{itemTitle}</Title>
-            <Image
-              source={{
-                uri: itemImage,
-              }}
-              style={{width: 140, height: 140}}
-            />
-          </PokeDetails>
-          <View>
-            <Title>Abilities</Title>
-            <FlatList
-              data={abilities}
-              renderItem={({item}) => (
-                <ItemDetailsList>
-                  <Item>
-                    <Text>{item.ability.name}</Text>
-                  </Item>
-                  <Item>
-                    <Text>{item.slot}</Text>
-                  </Item>
-                </ItemDetailsList>
-              )}
-              keyExtractor={(item, index) => index.toString()}
-            />
-          </View>
-          <View>
-            <Title>Base Experience</Title>
-            <ItemDetailsList>
-              <Text>{baseExperience}</Text>
-            </ItemDetailsList>
-          </View>
-          <View>
-            <Title>Height</Title>
-            <ItemDetailsList>
-              <Text>{height}</Text>
-            </ItemDetailsList>
-          </View>
+      <ScrollView
+        horizontal={true}
+        contentContainerStyle={{width: '100%', height: '100%'}}>
+        <Container>
+          <Content>
+            <PokeDetails>
+              <Title>{itemTitle}</Title>
+              <Image
+                source={{
+                  uri: itemImage,
+                }}
+                style={{width: 140, height: 140}}
+              />
+            </PokeDetails>
+            <View>
+              <Title>Abilities</Title>
+              <Divider />
+              <FlatList
+                data={abilities}
+                renderItem={({item}) => (
+                  <ItemDetailsList>
+                    <Item>
+                      <Text>{item.ability.name}</Text>
+                    </Item>
+                    <Item>
+                      <Text>{item.slot}</Text>
+                    </Item>
+                  </ItemDetailsList>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+            <View>
+              <Title>Base Experience</Title>
+              <Divider />
+              <ItemDetailsList>
+                <Text>{baseExperience}</Text>
+              </ItemDetailsList>
+            </View>
+            <View>
+              <Title>Height</Title>
+              <Divider />
+              <ItemDetailsList>
+                <Text>{height}</Text>
+              </ItemDetailsList>
+            </View>
 
-          <View>
-            <Title>Moves</Title>
-            <FlatList
-              contentContainerStyle={{justifyContent: 'space-between', flex: 1}}
-              style={{padding: 10, flexDirection: 'row'}}
-              data={moves}
-              numColumns={2}
-              renderItem={({item}) => (
-                <Item>
-                  <Text>{item.move.name}</Text>
-                </Item>
-              )}
-              keyExtractor={(item, index) => index.toString()}
-            />
-          </View>
-          <View>
-            <Title>Sprites</Title>
-            <FlatList
-              data={sprites}
-              renderItem={({item}) => (
-                <Item>
-                  <Text>{item.back_default}</Text>
-                </Item>
-              )}
-              keyExtractor={(item, index) => index.toString()}
-            />
-          </View>
-        </Content>
-      </Container>
+            <View>
+              <Title>Moves</Title>
+              <Divider />
+              <FlatList
+                contentContainerStyle={{
+                  justifyContent: 'space-between',
+                  flex: 1,
+                }}
+                style={{padding: 10, flexDirection: 'row'}}
+                data={moves}
+                numColumns={2}
+                renderItem={({item}) => (
+                  <Item>
+                    <Text>{item.move.name}</Text>
+                  </Item>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+            <View>
+              <Title>Sprites</Title>
+              <Divider />
+              <FlatList
+                data={sprites}
+                renderItem={({item}) => (
+                  <Item>
+                    <Text>{item.back_default}</Text>
+                  </Item>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+            <View>
+              <Title>Stats</Title>
+              <Divider />
+              <FlatList
+                contentContainerStyle={{
+                  justifyContent: 'space-between',
+                  flex: 1,
+                }}
+                style={{padding: 10, flexDirection: 'row'}}
+                data={stats}
+                horizontal={false}
+                numColumns={2}
+                renderItem={({item}) => (
+                  <Item>
+                    <Text>{item.stat.name}</Text>
+                  </Item>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+            <View>
+              <Title>Types</Title>
+              <Divider />
+              <FlatList
+                data={types}
+                renderItem={({item}) => (
+                  <ItemDetailsList>
+                    <Item>
+                      <Text>{item.slot}</Text>
+                    </Item>
+                  </ItemDetailsList>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+          </Content>
+        </Container>
+      </ScrollView>
     </ScrollView>
   );
 };
