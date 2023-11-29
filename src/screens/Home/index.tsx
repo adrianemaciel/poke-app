@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Container>
         <Title>Pokedex</Title>
-        <ImageSvg source={image}></ImageSvg>
+        <ImageSvg source={require("../../../assets/images/image-home.png")}></ImageSvg>
       </Container>
     </>
   );
