@@ -1,16 +1,12 @@
-import {Container, ImageHome, ImageText} from './styles';
-
-const image = {
-  uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz4aL_33v_aU9IrkODvsWxmVCmU_C604Zl2A&usqp=CAU',
-};
+import {Container, ImageHome, Title} from './styles';
 
 const Home = () => {
   return (
     <>
       <Container>
-        <ImageHome source={image}>
-          <ImageText>Pokedex</ImageText>
-        </ImageHome>
+        <Title>Pokedex</Title>
+        <ImageHome
+          source={require('../../../assets/images/image-home.png')}></ImageHome>
       </Container>
     </>
   );
