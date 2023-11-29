@@ -6,7 +6,7 @@ const Container = styled(View)`
   background-color: #001373;
 `;
 
-const ImageSvg = styled(Image)`
+const ImageHome = styled(Image)`
   position: absolute;
   width: 236px;
   height: 307px;
@@ -23,4 +23,4 @@ const Title = styled(Text)`
   padding: 20px;
 `;
 
-export {Container, ImageSvg, Title};
+export {Container, ImageHome, Title};
