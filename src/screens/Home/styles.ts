@@ -3,7 +3,6 @@ import {View, Image, Text} from 'react-native';
 
 const Container = styled(View)`
   flex: 1;
-  background-color: #001373;
 `;
 
 const ImageHome = styled(Image)`
