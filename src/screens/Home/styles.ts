@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import {View, Image, Text} from 'react-native';
+import {View, Text} from 'react-native';
 
 const Container = styled(View)`
   flex: 1;
 `;
 
-const ImageHome = styled(Image)`
+const SvgContainer = styled(View)`
   position: absolute;
   width: 236px;
   height: 307px;
@@ -16,10 +16,10 @@ const ImageHome = styled(Image)`
 
 const Title = styled(Text)`
   color: #ffffff;
-  font-family: 'Roboto-Bold';  
+  font-family: 'Roboto-Bold';
   font-size: 42px;
   text-align: center;
   padding: 20px;
 `;
 
-export {Container, ImageHome, Title};
+export {Container, SvgContainer, Title};
