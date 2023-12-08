@@ -11,16 +11,14 @@ const Container = styled(View)`
 
 const Content = styled(View)`
   height: 100%;
-  margin-top: 10px;
+  margin: 10px;
 `;
 
 const Title = styled(Text)`
-  align-self: center;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 800;
+  color: #fff;
+  font-family: 'Roboto-Bold';
   font-size: 18px;
-  text-transform: capitalize;
+  text-align: center;
 `;
 
 const PokeDetails = styled(View)`
@@ -31,13 +29,12 @@ const PokeDetails = styled(View)`
 const ItemDetailsList = styled(View)`
   flex-direction: row;
   justify-content: center;
-  margin: 5px;
 `;
 
 const Item = styled(View)`
-  padding: 10px;
-  width: 48%;
+  flex: 1;
   align-items: center;
+  margin-bottom: 10px;
 `;
 
 export {Container, Content, Title, PokeDetails, Item, ItemDetailsList};
