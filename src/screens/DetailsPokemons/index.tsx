@@ -103,7 +103,7 @@ const Details = ({route}: any) => {
             style={{flex: 1}}>
             <Content>
               <PokeDetails>
-                <Title>{itemTitle}</Title>
+                <Title style={{textTransform: 'uppercase'}}>{itemTitle}</Title>
                 <Image
                   source={{
                     uri: itemImage,
