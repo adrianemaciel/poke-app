@@ -16,7 +16,7 @@ const SvgContainer = styled(View)`
 
 const Title = styled(Text)`
   color: #ffffff;
-  font-family: 'Roboto-Bold';
+  font-family: 'Roboto-ThinItalic';
   font-size: 42px;
   text-align: center;
   padding: 20px;
