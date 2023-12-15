@@ -19,6 +19,7 @@ const Title = styled(Text)`
   font-family: 'Roboto-Bold';
   font-size: 18px;
   text-align: center;
+  margin-top: 10;
 `;
 
 const PokeDetails = styled(View)`
