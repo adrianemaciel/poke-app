@@ -11,7 +11,7 @@ const Home = () => {
           start={{x: 1, y: 0}}
           end={{x: 0, y: 1}}
           style={{flex: 1}}>
-          <Title>Pokedex</Title>
+          <Title>Os Super Poderosos POKÉMONS</Title>
           <SvgContainer>
             <SGVHOME />
           </SvgContainer>
