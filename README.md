@@ -30,4 +30,4 @@ Project in React Native about Pokemons.
 
 ## Link para acesso ao projeto
 
-<a href=“./docs/PokeApp.apk“>Baixe aqui a APK</a>
+<a href="./docs/PokeApp.apk">Baixe aqui a APK</a>
