@@ -27,3 +27,7 @@ Project in React Native about Pokemons.
 - React Navigation
 
   > Utilizado para criar uma estrutura de navegação entre telas.
+
+## Link para acesso ao projeto
+
+<a href=“android\app\build\outputs\apk\release\app-release.apk“>Baixe aqui a APK</a>
